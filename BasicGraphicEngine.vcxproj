@@ -228,6 +228,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bin\bb.cpp" />
     <ClCompile Include="GraphicEngine\GraphicEngine.cpp" />
     <ClCompile Include="GraphicEngine\ImGui\imgui.cpp" />
     <ClCompile Include="GraphicEngine\ImGui\imgui_demo.cpp" />
@@ -260,6 +261,16 @@
     <ClInclude Include="MainEngine\MainEngine.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\bb.exe" />
+    <None Include="bin\nomad.0.18468.215146.input" />
+    <None Include="bin\nomad.0.18468.215146.output" />
+    <None Include="bin\nomad.0.4892.61486.input" />
+    <None Include="bin\nomad.bat" />
+    <None Include="bin\nomad.dll" />
+    <None Include="bin\nomad.exe" />
+    <None Include="bin\nomad.exp" />
+    <None Include="bin\sgtelib.dll" />
+    <None Include="bin\sgtelib.exp" />
     <None Include="GraphicEngine\ImGui\imgui.natstepfilter" />
     <None Include="GraphicEngine\OpenGL\Shaders\simpletext.frag" />
     <None Include="GraphicEngine\OpenGL\Shaders\simpletext.vert" />
@@ -268,12 +279,16 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="bin\param.txt" />
+    <Text Include="bin\test.0.txt" />
     <Text Include="GraphicEngine\ImGui\LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="GraphicEngine\ImGui\imgui.natvis" />
   </ItemGroup>
   <ItemGroup>
+    <Library Include="bin\nomad.lib" />
+    <Library Include="bin\sgtelib.lib" />
     <Library Include="GraphicEngine\OpenGL\Libraries\lib\glfw3.lib" />
   </ItemGroup>
   <ItemGroup>

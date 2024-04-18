@@ -228,7 +228,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="bin\bb.cpp" />
     <ClCompile Include="GraphicEngine\GraphicEngine.cpp" />
     <ClCompile Include="GraphicEngine\ImGui\imgui.cpp" />
     <ClCompile Include="GraphicEngine\ImGui\imgui_demo.cpp" />
@@ -257,8 +256,8 @@
     <ClInclude Include="GraphicEngine\ImGui\imstb_textedit.h" />
     <ClInclude Include="GraphicEngine\ImGui\imstb_truetype.h" />
     <ClInclude Include="GraphicEngine\OpenGL\shaderClass.h" />
-    <ClInclude Include="MainEngine\UIWindow.h" />
     <ClInclude Include="MainEngine\MainEngine.h" />
+    <ClInclude Include="MainEngine\UIWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\bb.exe" />

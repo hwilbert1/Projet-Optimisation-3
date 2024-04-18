@@ -127,9 +127,10 @@ public:
 	void Display()
 	{
 
+
 		ImGui::Begin("Debug");
-		
-		
+
+
 
 		if (ImGui::CollapsingHeader("Help"))
 		{
@@ -148,26 +149,18 @@ public:
 
 		}
 
-		if (ImGui::Button("Reset"))
+		 if (ImGui::Button("Reset"))
 		{
-			MainEngine::GetInstance()->ToReset = !MainEngine::GetInstance()->ToReset;
+			 MainEngine::GetInstance()->ToReset = !MainEngine::GetInstance()->ToReset;
 		}
-		ImGui::InputFloat("Speed", &(MainEngine::GetInstance()->simulationspeed), 0.01f, 1.0f, "%.3f");
+		 ImGui::InputFloat("Speed", &(MainEngine::GetInstance()->simulationspeed), 0.01f, 1.0f, "%.3f");
 
-		ImGui::Checkbox("Pause", &(MainEngine::GetInstance()->pauseapp));
 
-		ImGui::Checkbox("Step", &MainEngine::GetInstance()->stepapp);
-
-		ImGui::Checkbox("1", &MainEngine::GetInstance()->bool1);
-		ImGui::Checkbox("2", &MainEngine::GetInstance()->bool2);
-		ImGui::Checkbox("3", &MainEngine::GetInstance()->bool3);
-		ImGui::Checkbox("4", &MainEngine::GetInstance()->bool4);
-		ImGui::Checkbox("5", &MainEngine::GetInstance()->bool5);
+		 ImGui::Checkbox("1", &MainEngine::GetInstance()->bool1);
 
 
 
 		ImGui::End();
-
 	}
 
 

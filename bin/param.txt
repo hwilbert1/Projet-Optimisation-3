@@ -16,10 +16,10 @@ BB_OUTPUT_TYPE OBJ PB     # takes in argument the name of
                               #  options are described in the
                               #  detailed parameters list)
 
-X0             ( 0 0 0 0 0 137.88 554 )  # starting point
+X0	( 0 0 0 0 0 137 550 ) 
 
-LOWER_BOUND 	( 0 0 0 0 0 137.88 554 )  # all variables are >= -6
-UPPER_BOUND    	( 0 160 160 160 160 137.88 554 )  # Les 5 debit suivit de l elevation en aval et du debit total
+LOWER_BOUND	( 0 0 0 0 0 137 550 ) 
+UPPER_BOUND	(160 160 160 160 160 137 550) 
                               # x_4 and x_5 have no bounds
 
 MAX_BB_EVAL    300            # the algorithm terminates when
@@ -39,4 +39,35 @@ DISPLAY_DEGREE 2
 DISPLAY_STATS BBE ( SOL ) OBJ # Display the number of evaluation (BBE),
 							  # the current solution ( SOL ) and the objective
 
-STATS_FILE test.txt BBE ( SOL ) OBJ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

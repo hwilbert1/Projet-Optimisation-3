@@ -633,7 +633,7 @@ public:
                 ImGui::SeparatorText("");
 
                 HelpMarker(
-                    "Ce boutton va lancer Nomad dans un terminal\n");
+                    "Ce boutton va lancer Nomad dans un terminal\nComme il s'agit de problème de maximisation, la fonction objectif a été inverse\ncar Nomad ne peut traiter que des probleme \nde minimisation\n");
                 if (ImGui::Button("Demarrer Nomad"))
                 {
 

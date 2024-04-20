@@ -11,91 +11,6 @@
 #include <iostream>
 #include "MainEngine.h"
 #include <fstream>
-enum UIElementType
-{
-	Text,
-	Button,
-	
-};
-
-
-class UIElement
-{
-public:
-	void printst()
-	{
-		std::cout << "ptr\n";
-	}
-
-	UIElement(UIElementType _type)
-	{
-		type = _type;
-		//func = printst;
-	}
-
-	void Display()
-	{
-		switch (type)
-		{
-		case Text:
-			ImGui::BulletText("Camera controls : ZQSD (qwerty), WASD (azerty),\n crtl to go down, space to go up, mouse left click to orient the camera.");
-			break;
-		case Button:
-			if (ImGui::Button("Reset"))
-			{
-				//func();
-			}
-			break;
-		default:
-			break;
-		}
-	}
-	//void (*func)();
-	UIElementType type;
-};
-
-class UIWindowNode
-{
-public:
-	UIWindowNode()
-	{
-		UIElement e1(Text);
-		UIElement e2(Button);
-		Elements.emplace("1", e1);
-		Elements.emplace("2", e2);
-	}
-
-	void Display() 
-	{
-		if (Nodes.size() != 0)
-		{
-			ImGui::SeparatorText("ABOUT THIS DEMO:");
-
-			std::map<std::string, UIWindowNode>::iterator it2 = Nodes.begin();
-			while (it2 != Nodes.end())
-			{
-				it2->second.Display();
-				++it2;
-			}
-		}
-		else
-		{
-
-			ImGui::SeparatorText("Node terminale");
-			std::map<std::string, UIElement>::iterator it2 = Elements.begin();
-			while (it2 != Elements.end())
-			{
-				it2->second.Display();
-				++it2;
-			}
-		}
-	}
-
-protected:
-
-	std::map<std::string, UIElement> Elements;
-	std::map<std::string, UIWindowNode> Nodes;
-};
 
 class UIWindow
 {
@@ -103,7 +18,7 @@ public:
 	virtual void Display() 
 	{
 		ImGui::Begin(name.c_str());
-		Root.Display();
+
 		ImGui::End();
 	}
 
@@ -112,7 +27,7 @@ public:
 		name = _name;
 	}
 protected:
-	UIWindowNode Root = UIWindowNode();
+
 	std::string name = "default";
 };
 

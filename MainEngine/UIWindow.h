@@ -560,19 +560,19 @@ public:
             const float   DebitTotal_zero = 0.f;
 
             float DebitTotal_one = 2000.0f;
-            ImGui::DragScalar("DebitTotal", ImGuiDataType_Float, &DebitTotal, 0.1f, &DebitTotal_zero, &DebitTotal_one, "%0.1f");
+            ImGui::DragScalar("Debit Total (m3/s)", ImGuiDataType_Float, &DebitTotal, 0.1f, &DebitTotal_zero, &DebitTotal_one, "%0.1f");
 
             const float   ElevAm_zero = 0.f, ElevAm_one = 2000.f;
-            ImGui::DragScalar("ElevAm", ImGuiDataType_Float, &ElevAm, 0.1f, &ElevAm_zero, &ElevAm_one, "%0.1f");
+            ImGui::DragScalar("Elevation en Amont (m)", ImGuiDataType_Float, &ElevAm, 0.1f, &ElevAm_zero, &ElevAm_one, "%0.1f");
 
-            ImGui::SeparatorText("Selectionner une limite pour les turbines");
+            ImGui::SeparatorText("Selectionner une limite de debit pour les turbines");
 
             const float   Q_zero = 0.f, Q_one = 160.f;
-            ImGui::DragScalar("MaxQ1", ImGuiDataType_Float, &MaxQ1, 0.1f, &Q_zero, &Q_one, "%0.1f");
-            ImGui::DragScalar("MaxQ2", ImGuiDataType_Float, &MaxQ2, 0.1f, &Q_zero, &Q_one, "%0.1f");
-            ImGui::DragScalar("MaxQ3", ImGuiDataType_Float, &MaxQ3, 0.1f, &Q_zero, &Q_one, "%0.1f");
-            ImGui::DragScalar("MaxQ4", ImGuiDataType_Float, &MaxQ4, 0.1f, &Q_zero, &Q_one, "%0.1f");
-            ImGui::DragScalar("MaxQ5", ImGuiDataType_Float, &MaxQ5, 0.1f, &Q_zero, &Q_one, "%0.1f");
+            ImGui::DragScalar("Max Q1 (m3/s)", ImGuiDataType_Float, &MaxQ1, 0.1f, &Q_zero, &Q_one, "%0.1f");
+            ImGui::DragScalar("Max Q2 (m3/s)", ImGuiDataType_Float, &MaxQ2, 0.1f, &Q_zero, &Q_one, "%0.1f");
+            ImGui::DragScalar("Max Q3 (m3/s)", ImGuiDataType_Float, &MaxQ3, 0.1f, &Q_zero, &Q_one, "%0.1f");
+            ImGui::DragScalar("Max Q4 (m3/s)", ImGuiDataType_Float, &MaxQ4, 0.1f, &Q_zero, &Q_one, "%0.1f");
+            ImGui::DragScalar("Max Q5 (m3/s)", ImGuiDataType_Float, &MaxQ5, 0.1f, &Q_zero, &Q_one, "%0.1f");
 
             ImGui::SeparatorText("");
             if (ImGui::Button("Optimiser par programmation dynamique"))
@@ -582,65 +582,65 @@ public:
             }
 
             ImGui::SeparatorText("Puissances et Debits Optimaux");
-            if (ImGui::BeginTable("Resultat", 4))
+            if (ImGui::BeginTable("Resultats", 4))
             {
                 ImGui::TableNextRow();
                 ImGui::TableNextColumn();
-                ImGui::Text("Q1");
+                ImGui::Text("Q1 (m3/s)");
                 ImGui::TableNextColumn();
                 ImGui::Text("%.1f", OptQ1);
                 ImGui::TableNextColumn();
-                ImGui::Text("P1");
+                ImGui::Text("P1 (MW)");
                 ImGui::TableNextColumn();
                 ImGui::Text("%.1f", OptP1);
 
                 ImGui::TableNextRow();
                 ImGui::TableNextColumn();
-                ImGui::Text("Q2");
+                ImGui::Text("Q2 (m3/s)");
                 ImGui::TableNextColumn();
                 ImGui::Text("%.1f", OptQ2);
                 ImGui::TableNextColumn();
-                ImGui::Text("P2");
+                ImGui::Text("P2 (MW)");
                 ImGui::TableNextColumn();
                 ImGui::Text("%.1f", OptP2);
 
                 ImGui::TableNextRow();
                 ImGui::TableNextColumn();
-                ImGui::Text("Q3");
+                ImGui::Text("Q3 (m3/s)");
                 ImGui::TableNextColumn();
                 ImGui::Text("%.1f", OptQ3);
                 ImGui::TableNextColumn();
-                ImGui::Text("P3");
+                ImGui::Text("P3 (MW)");
                 ImGui::TableNextColumn();
                 ImGui::Text("%.1f", OptP3);
 
                 ImGui::TableNextRow();
                 ImGui::TableNextColumn();
-                ImGui::Text("Q4");
+                ImGui::Text("Q4 (m3/s)");
                 ImGui::TableNextColumn();
                 ImGui::Text("%.1f", OptQ4);
                 ImGui::TableNextColumn();
-                ImGui::Text("P4");
+                ImGui::Text("P4 (MW)");
                 ImGui::TableNextColumn();
                 ImGui::Text("%.1f", OptP4);
 
                 ImGui::TableNextRow();
                 ImGui::TableNextColumn();
-                ImGui::Text("Q5");
+                ImGui::Text("Q5 (m3/s)");
                 ImGui::TableNextColumn();
                 ImGui::Text("%.1f", OptQ5);
                 ImGui::TableNextColumn();
-                ImGui::Text("P5");
+                ImGui::Text("P5 (MW)");
                 ImGui::TableNextColumn();
                 ImGui::Text("%.1f", OptP5);
 
                 ImGui::EndTable();
             }
 
-            ImGui::Text("Puissance optimale : %.1f", OptP1 + OptP2 + OptP3 + OptP4 + OptP5);
+            ImGui::Text("Puissance optimale (MW) : %.1f", OptP1 + OptP2 + OptP3 + OptP4 + OptP5);
 
             ImGui::SeparatorText("");
-            if (ImGui::Button("Clear Values"))
+            if (ImGui::Button("Effacer les valeurs"))
             {
                 values.clear();
                 values.push_back(0);
@@ -653,7 +653,9 @@ public:
 
             //static float arr[] = { 0.6f, 0.1f, 1.0f, 0.5f, 0.92f, 0.1f, 0.2f };
 
-            ImGui::PlotHistogram("Previous Results", arr, values.size(), 0, NULL, 150.0f, 250.0f, ImVec2(0, 80.0f));
+            HelpMarker(
+                "Ce tableau contient la puissance optimale calculer précédement. L'axe verticale est entre 150 MW et 250 MW\n");
+            ImGui::PlotHistogram("Resultats precedents", arr, values.size(), 0, NULL, 150.0f, 250.0f, ImVec2(0, 80.0f));
         }
         if (ImGui::CollapsingHeader("Nomad"))
         {
@@ -662,19 +664,19 @@ public:
             const float   DebitTotal_zero = 0.f;
 
             float DebitTotal_one = 2000.0f;
-            ImGui::DragScalar("DebitTotal", ImGuiDataType_Float, &DebitTot, 0.1f, &DebitTotal_zero, &DebitTotal_one, "%0.1f");
+            ImGui::DragScalar("Debit Total (m3/s)", ImGuiDataType_Float, &DebitTot, 0.1f, &DebitTotal_zero, &DebitTotal_one, "%0.1f");
 
             const float   ElevAm_zero = 0.f, ElevAm_one = 2000.f;
-            ImGui::DragScalar("ElevAm", ImGuiDataType_Float, &ElevationAm, 0.1f, &ElevAm_zero, &ElevAm_one, "%0.1f");
+            ImGui::DragScalar("Elevation en Amont (m)", ImGuiDataType_Float, &ElevationAm, 0.1f, &ElevAm_zero, &ElevAm_one, "%0.1f");
 
-            ImGui::SeparatorText("Selectionner une limite pour les turbines");
+            ImGui::SeparatorText("Selectionner une limite de debit pour les turbines");
 
             const float   Q_zero = 0.f, Q_one = 160.f;
-            ImGui::DragScalar("MaxQ1", ImGuiDataType_Float, &X1, 0.1f, &Q_zero, &Q_one, "%0.1f");
-            ImGui::DragScalar("MaxQ2", ImGuiDataType_Float, &X2, 0.1f, &Q_zero, &Q_one, "%0.1f");
-            ImGui::DragScalar("MaxQ3", ImGuiDataType_Float, &X3, 0.1f, &Q_zero, &Q_one, "%0.1f");
-            ImGui::DragScalar("MaxQ4", ImGuiDataType_Float, &X4, 0.1f, &Q_zero, &Q_one, "%0.1f");
-            ImGui::DragScalar("MaxQ5", ImGuiDataType_Float, &X5, 0.1f, &Q_zero, &Q_one, "%0.1f");
+            ImGui::DragScalar("Max Q1 (m3/s)", ImGuiDataType_Float, &X1, 0.1f, &Q_zero, &Q_one, "%0.1f");
+            ImGui::DragScalar("Max Q2 (m3/s)", ImGuiDataType_Float, &X2, 0.1f, &Q_zero, &Q_one, "%0.1f");
+            ImGui::DragScalar("Max Q3 (m3/s)", ImGuiDataType_Float, &X3, 0.1f, &Q_zero, &Q_one, "%0.1f");
+            ImGui::DragScalar("Max Q4 (m3/s)", ImGuiDataType_Float, &X4, 0.1f, &Q_zero, &Q_one, "%0.1f");
+            ImGui::DragScalar("Max Q5 (m3/s)", ImGuiDataType_Float, &X5, 0.1f, &Q_zero, &Q_one, "%0.1f");
 
             ImGui::SeparatorText("");
 

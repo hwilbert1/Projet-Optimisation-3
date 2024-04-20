@@ -25,7 +25,9 @@ int main ( int argc , char ** argv ) {
         in >> Debitotal;
 
         if (in.fail())
-            f = 1e20; c = -1e20
+        {
+            f = 1e20; c1 = -1e20;
+        }
         else {
 
             c1 = -1;

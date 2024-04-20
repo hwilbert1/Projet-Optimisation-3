@@ -32,7 +32,7 @@ void DisplayUI()
 	UIWindowControler::GetInstance()->DisplayWindows();
 	
 	
-	ImGui::ShowDemoWindow(&b);
+	//ImGui::ShowDemoWindow(&b);
 }
 
 
